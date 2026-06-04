@@ -1,0 +1,58 @@
+# Maven Build Output
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.restore
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.metadata/
+.recommenders/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating System files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Icon?
+ehthumbs_vista.db
+desktop.ini
+
+# Logs & Temp
+*.log
+logs/
+temp/
+tmp/
+*.tmp
+*.bak
+
+# Compiled Class files & Packaging
+*.class
+*.jar
+*.war
+*.ear
+
+# Secrets and environment variables
+.env
+.env.local
+
+# Local Spring Boot configurations
+src/main/resources/application-local.properties

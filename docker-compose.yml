@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  blooddonation-db:
+    image: postgres:15-alpine
+    container_name: blooddonation-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=blooddonation
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d blooddonation"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  blooddonation-app:
+    build: .
+    container_name: blooddonation-app
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=blooddonation-db
+      - DB_PORT=5432
+      - DB_NAME=blooddonation
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - JWT_SECRET=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+
+    depends_on:
+      blooddonation-db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
